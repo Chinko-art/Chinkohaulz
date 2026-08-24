@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costco Gift Card Offer</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #222222;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #005DAA; /* Costco Blue */
+            letter-spacing: -0.5px;
+        }
+
+        .amount {
+            font-size: 5.5rem;
+            font-weight: 900;
+            color: #005DAA; /* Costco Blue */
+            margin: -10px 0 0 0;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #777777;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: left;
+            background: #ffffff;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eaeaea;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background-color: #005DAA; /* Costco Blue */
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Call to Action Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: #E31837; /* Costco Red */
+            color: #ffffff;
+            border: none;
+            padding: 22px 20px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #C2122B;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin: 0 0 8px 0;
+        }
+
+        .faq-answer {
+            color: #666666;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header & Branding -->
+        <div class="brand-header">
+            <!-- Simple SVG representation of the Costco lines -->
+            <svg width="32" height="32" viewBox="0 0 32 32">
+                <rect x="2" y="6" width="28" height="5" fill="#E31837" />
+                <rect x="2" y="13.5" width="28" height="5" fill="#005DAA" />
+                <rect x="2" y="21" width="28" height="5" fill="#005DAA" />
+            </svg>
+            <div class="brand-name">COSTCO</div>
+        </div>
+
+        <h1 class="amount">$750</h1>
+        <p class="subtitle">Costco Gift Card</p>
+
+        <!-- Instructions Box -->
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Tap the Claim button</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Provide your name & email</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Complete 4–6 sponsored deals</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Check your email for your reward</div>
+            </div>
+        </div>
+
+        <!-- CTA Button -->
+        <a href="#" class="cta-button">
+            Claim Your Gift Card &rarr;
+        </a>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <div class="faq-item">
+                <h3 class="faq-question">How long does this take?</h3>
+                <p class="faq-answer">Most people finish in an average of 10 minutes. Each deal takes 1–2 minutes.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">What are deals?</h3>
+                <p class="faq-answer">They are random tasks like start a trial, fill out a form, answer a survey, test an app or game and level up.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h3 class="faq-question">When do I receive my reward?</h3>
+                <p class="faq-answer">Your gift card is sent digitally within 24 hours of completing and verifying your deals.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
