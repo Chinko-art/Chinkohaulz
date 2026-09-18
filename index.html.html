@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Windsor Hoco Dress Voucher</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            filter: blur(12px) brightness(0.25);
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            background: rgba(5, 5, 5, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 40px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .header-brand {
+            color: #fff; 
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+
+        .header-brand .circle {
+            width: 22px;
+            height: 22px;
+            border: 5px solid #fff;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), inset 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .amount {
+            font-size: 78px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            margin: 5px 0 10px 0;
+            letter-spacing: -2px;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.9), 0 0 45px rgba(255, 255, 255, 0.4);
+        }
+
+        .subtitle {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .steps {
+            background: rgba(10, 10, 10, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: left;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            background-color: #fff;
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 15px;
+            margin-right: 18px;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+        }
+
+        .step-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .claim-btn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            width: 100%;
+            padding: 22px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .claim-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        }
+
+        .social-proof {
+            margin-top: 35px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 14px;
+            color: #eee;
+            position: relative;
+            overflow: hidden;
+            height: 85px; 
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .proof-item {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            padding: 0 20px;
+            font-style: italic;
+        }
+
+        .proof-item.active {
+            opacity: 1;
+        }
+
+        .user-avatar {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #fff;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 8px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .user-name {
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            font-style: normal;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .visitor-counter {
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+            font-size: 10px;
+            color: #1a1a1a;
+            user-select: none;
+            pointer-events: none;
+            font-family: monospace;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="header-brand">
+            <span class="circle"></span> WINDSOR
+        </div>
+        <div class="amount">$750</div>
+        <div class="subtitle">WINDSOR GIFT CARD</div>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">Tap the Claim button</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Provide your name & email</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">Complete 4–6 sponsored deals</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-text">Check your email for your reward</div>
+            </div>
+        </div>
+
+        <button class="claim-btn">
+            CLAIM YOUR GIFT CARD <span>&#8594;</span>
+        </button>
+
+        <div class="social-proof" id="social-proof-container">
+            <!-- Comments injected via JS -->
+        </div>
+    </div>
+
+    <div class="visitor-counter" id="live-visitors">247</div>
+
+    <script>
+        const commentsData = [
+            { name: "Chloe M.", text: ""omgg was able to get my hoco dress using the discount on the voucher"" },
+            { name: "Jessica T.", text: ""this is probably one of the best student discount deals ever"" },
+            { name: "Sarah L.", text: ""literally crying rn I got my dream dress for hoco thanks to this"" },
+            { name: "Amanda B.", text: ""just claimed mine! so excited for homecoming"" },
+            { name: "Riley K.", text: ""wait this actually worked?? got my voucher in my email"" },
+            { name: "Mia P.", text: ""the dresses on windsor are so cute, this is a lifesaver"" },
+            { name: "Taylor R.", text: ""me and my bestie both got ours today!"" },
+            { name: "Brittany J.", text: ""took like 5 mins but totally worth it for $750"" },
+            { name: "Lauren D.", text: ""hoco 2026 is gonna be lit now thank u"" },
+            { name: "Emma S.", text: ""I was skeptical but it actually went through lol"" },
+            { name: "Olivia C.", text: ""yesss secured the bag for my homecoming fit"" },
+            { name: "Sophia W.", text: ""finally I can afford those heels to match my dress"" },
+            { name: "Ava H.", text: ""my mom is gonna be so happy I didn't spend her money"" },
+            { name: "Isabella G.", text: ""so fast and easy, highly recommend doing this"" },
+            { name: "Hannah N.", text: ""got the text, claimed the card, bought the dress. simple."" },
+            { name: "Madison F.", text: ""can't believe this is real, just got my confirmation"" },
+            { name: "Ashley V.", text: ""already ordered my dress, it ships tomorrow!"" },
+            { name: "Grace E.", text: ""best $750 I never spent tbh"" },
+            { name: "Alyssa M.", text: ""if you're on the fence just do it, takes 2 minutes"" },
+            { name: "Kayla O.", text: ""hoco prep is officially complete!"" }
+        ];
+
+        const container = document.getElementById('social-proof-container');
+        
+        commentsData.forEach((comment, index) => {
+            const div = document.createElement('div');
+            div.className = `proof-item ${index === 0 ? 'active' : ''}`;
+            div.innerHTML = `
+                <div class="user-name"><div class="user-avatar"></div> ${comment.name}</div>
+                ${comment.text}
+            `;
+            container.appendChild(div);
+        });
+
+        const proofs = document.querySelectorAll('.proof-item');
+        let currentProof = 0;
+
+        setInterval(() => {
+            proofs[currentProof].classList.remove('active');
+            currentProof = (currentProof + 1) % proofs.length;
+            proofs[currentProof].classList.add('active');
+        }, 3500);
+
+        const counterEl = document.getElementById('live-visitors');
+        let visitors = 247;
+
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 5) - 1; 
+            visitors += change;
+            if (visitors < 150) visitors = 150; 
+            counterEl.innerText = visitors;
+        }, 2500);
+    </script>
+</body>
+</html>
